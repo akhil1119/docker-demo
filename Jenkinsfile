@@ -12,7 +12,7 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t fayu/nodeapp:$BUILD_NUMBER .'
+                sh 'docker build -t fayu/nodeapp1:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -22,7 +22,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push fayu/nodeapp:$BUILD_NUMBER'
+                sh 'docker push fayu/nodeapp1:$BUILD_NUMBER'
             }
         }
         stage('pull image') {
