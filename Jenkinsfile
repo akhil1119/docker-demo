@@ -32,7 +32,7 @@ pipeline {
         }
       stage('run image') {
             steps{
-                sh 'docker run -d -p 8080:80 asakhil/nodeapp1:$BUILD_NUMBER'
+                sh 'docker run -d -p 443:80 asakhil/nodeapp1:$BUILD_NUMBER'
             }
         }   
 }
