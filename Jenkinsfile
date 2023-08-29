@@ -1,18 +1,18 @@
 pipeline {
     agent any 
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('docker-hub-fayu')
+    DOCKERHUB_CREDENTIALS = credentials('docker-hub-asakhil')
     }
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'https://github.com/shaik-fayu/nodejs-demo.git'
+            git 'https://github.com/akhil1119/docker-demo.git'
             }
         }
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t fayu/nodeapp1:$BUILD_NUMBER .'
+                sh 'docker build -t asakhil/nodeapp1:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -22,17 +22,17 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push fayu/nodeapp1:$BUILD_NUMBER'
+                sh 'docker push asakhil/nodeapp1:$BUILD_NUMBER'
             }
         }
         stage('pull image') {
             steps{
-                sh 'docker pull fayu/nodeapp1:$BUILD_NUMBER'
+                sh 'docker pull asakhil/nodeapp1:$BUILD_NUMBER'
             }
         }
       stage('run image') {
             steps{
-                sh 'docker run -d -p 443:80 fayu/nodeapp1:$BUILD_NUMBER'
+                sh 'docker run -d -p 443:80 asakhil/nodeapp1:$BUILD_NUMBER'
             }
         }   
 }
